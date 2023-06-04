@@ -3794,3 +3794,9 @@ AssetImportParameters requested are different than current active one (requested
   custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
   custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
 AssetImportWorkerClient::OnTransportError - code=10054 error=An existing connection was forcibly closed by the remote host.
+Thread 000000000000EE0C may have been prematurely finalized
+Thread 000000000000EE0C may have been prematurely finalized
+Thread 000000000000EE0C may have been prematurely finalized
+Thread 000000000000EE0C may have been prematurely finalized
+Thread 000000000000BDB4 may have been prematurely finalized
+Thread 000000000000BDB4 may have been prematurely finalized

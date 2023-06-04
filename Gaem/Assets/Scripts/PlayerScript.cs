@@ -57,6 +57,7 @@ public class PlayerScript : MonoBehaviour
                     playerRb.AddForce(Vector2.up * wallJumpStrength, ForceMode2D.Impulse);
                     usedDoubleJump = false;
                     wallJumpedRight = true;
+                    wallJumpedLeft = false;
                     wallJumpTime = Time.time;
                 }
 
@@ -67,6 +68,7 @@ public class PlayerScript : MonoBehaviour
                     playerRb.AddForce(Vector2.up * wallJumpStrength, ForceMode2D.Impulse);
                     usedDoubleJump = false;
                     wallJumpedLeft = true;
+                    wallJumpedRight = false;
                     wallJumpTime = Time.time;
                 }
 
