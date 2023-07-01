@@ -8,6 +8,8 @@ public class PivotPointScript : MonoBehaviour
     Camera mainCamera;
     Vector3 mousePosition;
     public GameObject player;
+
+    // PhotonView component is something Photon uses to update the view of the other screen or something.
     PhotonView view;
     // Start is called before the first frame update
     void Start()
@@ -19,6 +21,7 @@ public class PivotPointScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Using the view component, we can determine who controls the gameObject with the IsMine boolean.
         if (view.IsMine)
         {
             mousePosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
