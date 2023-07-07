@@ -5,6 +5,7 @@ using Photon.Pun;
 
 public class PlayerScript : MonoBehaviour
 {
+    public float health = 50;
     public float moveSpeed;
     public float jumpStrength;
     public float wallJumpStrength;
@@ -20,6 +21,7 @@ public class PlayerScript : MonoBehaviour
     public float resistWallJumpForce;
     public bool wallJumpedLeft = false;
     public bool wallJumpedRight = false;
+    public float bulletDamage = 1;
     PhotonView view;
 
     // Start is called before the first frame update
@@ -118,6 +120,11 @@ public class PlayerScript : MonoBehaviour
                 {
                     transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
                 }
+            }
+
+            if (health <= 0)
+            {
+                Destroy(gameObject);
             }
         }
         

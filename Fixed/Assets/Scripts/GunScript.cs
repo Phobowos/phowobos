@@ -33,7 +33,15 @@ public class GunScript : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Mouse0))
             {
                 // Must use the PhotonNetwork.Instantiate function to create the object on both screens.
-                PhotonNetwork.Instantiate(bullets[0].name, transform.position, transform.rotation);
+                if (PhotonNetwork.CurrentRoom == null)
+                {
+                    Instantiate(bullets[0], transform.position, transform.rotation);
+                }
+                else
+                {
+                    PhotonNetwork.Instantiate(bullets[0].name, transform.position, transform.rotation);
+                }
+                
             }
         }
 

@@ -5,12 +5,14 @@ using Photon.Pun;
 
 public class WallJumpCheckRight : MonoBehaviour
 {
-    PlayerScript player;
+    GameObject player;
+    PlayerScript playerScript;
     PhotonView view;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerScript>();
         view = player.GetComponent<PhotonView>();
     }
 
@@ -23,14 +25,14 @@ public class WallJumpCheckRight : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") && view.IsMine)
         {
-            player.ableToWallJumpRight = true;
+            playerScript.ableToWallJumpRight = true;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Ground") && view.IsMine)
         {
-            player.ableToWallJumpRight = false;
+            playerScript.ableToWallJumpRight = false;
         }
     }
 }
