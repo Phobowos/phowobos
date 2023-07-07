@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9595695e3994d594fb6b4b86016d6640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 15
+  moveSpeed: 35
+  damage: 5
   sorcererProjectileDeath:
   - {fileID: 9139060744168514571, guid: 11ed598d2cf0d424bacf8c262b3a707d, type: 3}

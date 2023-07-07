@@ -114,8 +114,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eff1c9130985954e970c7689b420497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScript: {fileID: 0}
   sorcererProjectileDeath:
   - {fileID: 3518800073065815780, guid: f570185a223716b4db28a44e5150750d, type: 3}
+  damage: 2
 --- !u!1 &2706148727971482979
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1337ef63189e56f4e9c014de3147d3ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 35
+  moveSpeed: 50
   startTime: 0
   lifeTime: 5
 --- !u!1 &5182090710431263183
@@ -278,8 +280,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eff1c9130985954e970c7689b420497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScript: {fileID: 0}
   sorcererProjectileDeath:
   - {fileID: 3518800073065815780, guid: f570185a223716b4db28a44e5150750d, type: 3}
+  damage: 2
 --- !u!1 &7108836376859950163
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,5 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eff1c9130985954e970c7689b420497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScript: {fileID: 0}
   sorcererProjectileDeath:
   - {fileID: 3518800073065815780, guid: f570185a223716b4db28a44e5150750d, type: 3}
+  damage: 2

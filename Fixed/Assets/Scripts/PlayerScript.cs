@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
@@ -125,6 +126,7 @@ public class PlayerScript : MonoBehaviour
             if (health <= 0)
             {
                 Destroy(gameObject);
+                SceneManager.LoadScene(4);
             }
         }
         
