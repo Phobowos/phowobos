@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SorcererChildProjectile : MonoBehaviour
+public class ExplosiveArrowScript : MonoBehaviour
 {
-    public PlayerScript playerScript;
-    public GameObject[] sorcererProjectileDeath;
-    public float damage = 2;
+    PlayerScript playerScript;
+    public float moveSpeed;
+    public float damage = 5;
+    public GameObject[] explosion;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,14 @@ public class SorcererChildProjectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            Destroy(gameObject);
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,17 +32,12 @@ public class SorcererChildProjectile : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
             playerScript.health -= damage;
-            Instantiate(sorcererProjectileDeath[0], transform.position, sorcererProjectileDeath[0].transform.rotation);
+            Instantiate(explosion[0], transform.position, explosion[0].transform.rotation);
         }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
-            Destroy(gameObject);
-        
     }
 }

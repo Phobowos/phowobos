@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8361620221184282104
+--- !u!1 &7147006465788020399
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8361620221184282099}
-  - component: {fileID: 8361620221184282100}
-  - component: {fileID: 8361620221184282101}
-  - component: {fileID: 8361620221184282102}
-  - component: {fileID: 8361620221184282103}
+  - component: {fileID: 7147006465788020392}
+  - component: {fileID: 7147006465788020395}
+  - component: {fileID: 7147006465788020394}
+  - component: {fileID: 7147006465788020397}
+  - component: {fileID: 7147006465788020396}
   m_Layer: 0
-  m_Name: SorcererTest 1
+  m_Name: SkeletonArcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8361620221184282099
+--- !u!4 &7147006465788020392
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361620221184282104}
+  m_GameObject: {fileID: 7147006465788020399}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.56, y: -5.19, z: 0}
+  m_LocalPosition: {x: 0.62, y: -4.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8361620221184282100
+--- !u!212 &7147006465788020395
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361620221184282104}
+  m_GameObject: {fileID: 7147006465788020399}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -76,25 +76,25 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.24113302, g: 0.08009967, b: 0.6792453, a: 1}
+  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Color: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &8361620221184282101
+--- !u!50 &7147006465788020394
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361620221184282104}
+  m_GameObject: {fileID: 7147006465788020399}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -108,13 +108,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &8361620221184282102
+--- !u!61 &7147006465788020397
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361620221184282104}
+  m_GameObject: {fileID: 7147006465788020399}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -125,41 +125,40 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 1, y: 2}
+    newSize: {x: 1, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
---- !u!114 &8361620221184282103
+--- !u!114 &7147006465788020396
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8361620221184282104}
+  m_GameObject: {fileID: 7147006465788020399}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d339087cf47c994a8216a95ab747a92, type: 3}
+  m_Script: {fileID: 11500000, guid: 1faa6209fb77c35458e2ed4bb6dad5d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  health: 20
-  contactDamage: 1
-  sorcererProjectiles:
-  - {fileID: 2706148727971482979, guid: 4044a54b5b90f67499591079ba442f3d, type: 3}
-  - {fileID: 500908485510298936, guid: afcaf81da4b3a7a44983bed511d86281, type: 3}
-  shieldHealth: 15
-  maxShieldHealth: 15
-  barrierUp: 0
+  moveSpeed: 8.5
+  health: 10
   attacking: 0
-  ableToAttack: 1
+  inRange: 0
   attackTime: 0
-  attackCooldownTime: 5
+  attackCooldownTime: 0
   gotAttackTime: 0
-  attackDuration: 2
+  attackDuration: 0.5
   startAttackTime: 0
   gotStartAttackTime: 0
+  ableToAttack: 0
+  arrows:
+  - {fileID: 6564321782612032573, guid: aed66f443f243ef4a90537909ca768c2, type: 3}
+  - {fileID: 7836619887065468764, guid: 6571b97ae587abc4a9ce24a836f0d968, type: 3}
+  - {fileID: 5654605918462957023, guid: b3209e463d92d154482b11d7ee7824c5, type: 3}
+  standingDistanceFromPlayer: 30

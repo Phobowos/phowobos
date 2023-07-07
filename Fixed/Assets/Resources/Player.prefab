@@ -152,6 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558e341d7b22dd044a00ed045c841927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health: 50
   moveSpeed: 10
   jumpStrength: 13
   wallJumpStrength: 13
@@ -165,6 +166,7 @@ MonoBehaviour:
   resistWallJumpForce: 0
   wallJumpedLeft: 0
   wallJumpedRight: 0
+  bulletDamage: 1
 --- !u!114 &5442954325615899216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -577,7 +579,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.2, y: 0.75}
+  m_Size: {x: 1, y: 0.75}
   m_EdgeRadius: 0
 --- !u!114 &7784190726942009411
 MonoBehaviour:

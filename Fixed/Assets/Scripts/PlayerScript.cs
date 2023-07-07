@@ -23,6 +23,10 @@ public class PlayerScript : MonoBehaviour
     public bool wallJumpedLeft = false;
     public bool wallJumpedRight = false;
     public float bulletDamage = 1;
+    public bool snared = false;
+    float snareTime;
+    bool gotSnareTime;
+    float snareDuration = 5;
     PhotonView view;
 
     // Start is called before the first frame update
@@ -35,91 +39,94 @@ public class PlayerScript : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {   
+    {
         // Jumping, Double Jumping, Wall Jumping
         if (view.IsMine)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (isOnGround)
+            if (snared == false)
+            { 
+                if (Input.GetKeyDown(KeyCode.Space))
                 {
-                    if (Input.GetKey(KeyCode.W))
+                    if (isOnGround)
                     {
-                        playerRb.velocity = new Vector2(0, 0);
-                        playerRb.AddForce(Vector2.up * (1.5f * jumpStrength), ForceMode2D.Impulse);
-                        isOnGround = false;
+                        if (Input.GetKey(KeyCode.W))
+                        {
+                            playerRb.velocity = new Vector2(0, 0);
+                            playerRb.AddForce(Vector2.up * (1.5f * jumpStrength), ForceMode2D.Impulse);
+                            isOnGround = false;
+                        }
+                        else
+                        {
+                            playerRb.velocity = new Vector2(0, 0);
+                            playerRb.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
+                            isOnGround = false;
+                        }
                     }
-                    else
+                    else if (!isOnGround)
                     {
-                        playerRb.velocity = new Vector2(0, 0);
-                        playerRb.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);
-                        isOnGround = false;
+
+                        if (ableToWallJumpRight)
+                        {
+                            playerRb.velocity = new Vector2(0, 0);
+                            playerRb.AddForce(Vector2.left * wallJumpStrength, ForceMode2D.Impulse);
+                            playerRb.AddForce(Vector2.up * wallJumpStrength * .75f, ForceMode2D.Impulse);
+                            usedDoubleJump = false;
+                            wallJumpedRight = true;
+                            wallJumpedLeft = false;
+                            wallJumpTime = Time.time;
+                        }
+
+                        else if (ableToWallJumpLeft)
+                        {
+                            playerRb.velocity = new Vector2(0, 0);
+                            playerRb.AddForce(Vector2.right * wallJumpStrength, ForceMode2D.Impulse);
+                            playerRb.AddForce(Vector2.up * wallJumpStrength * .75f, ForceMode2D.Impulse);
+                            usedDoubleJump = false;
+                            wallJumpedLeft = true;
+                            wallJumpedRight = false;
+                            wallJumpTime = Time.time;
+                        }
+
+                        else if (!usedDoubleJump)
+                        {
+                            usedDoubleJump = true;
+                            playerRb.velocity = new Vector2(playerRb.velocity.x, 0);
+                            playerRb.AddForce(Vector2.up * doubleJumpStrength, ForceMode2D.Impulse);
+                        }
                     }
                 }
-                else if (!isOnGround)
-                {
 
-                    if (ableToWallJumpRight)
+                // Wall Jumping's Stun Effect so you can't run into the wall and keep jumping forever.
+
+                if (Time.time > wallJumpTime + wallJumpStunTime)
+                {
+                    if (wallJumpedLeft)
                     {
-                        playerRb.velocity = new Vector2(0, 0);
-                        playerRb.AddForce(Vector2.left * wallJumpStrength, ForceMode2D.Impulse);
-                        playerRb.AddForce(Vector2.up * wallJumpStrength * .75f, ForceMode2D.Impulse);
-                        usedDoubleJump = false;
-                        wallJumpedRight = true;
                         wallJumpedLeft = false;
-                        wallJumpTime = Time.time;
-                    }
 
-                    else if (ableToWallJumpLeft)
+                    }
+                    if (wallJumpedRight)
                     {
-                        playerRb.velocity = new Vector2(0, 0);
-                        playerRb.AddForce(Vector2.right * wallJumpStrength, ForceMode2D.Impulse);
-                        playerRb.AddForce(Vector2.up * wallJumpStrength * .75f, ForceMode2D.Impulse);
-                        usedDoubleJump = false;
-                        wallJumpedLeft = true;
                         wallJumpedRight = false;
-                        wallJumpTime = Time.time;
-                    }
 
-                    else if (!usedDoubleJump)
+                    }
+                }
+
+                // Left Right Movement 
+
+                if (Input.GetKey(KeyCode.A))
+                {
+                    if (!wallJumpedLeft)
                     {
-                        usedDoubleJump = true;
-                        playerRb.velocity = new Vector2(playerRb.velocity.x, 0);
-                        playerRb.AddForce(Vector2.up * doubleJumpStrength, ForceMode2D.Impulse);
+                        transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
                     }
                 }
-            }
-
-            // Wall Jumping's Stun Effect so you can't run into the wall and keep jumping forever.
-
-            if (Time.time > wallJumpTime + wallJumpStunTime)
-            {
-                if (wallJumpedLeft)
+                if (Input.GetKey(KeyCode.D))
                 {
-                    wallJumpedLeft = false;
-
-                }
-                if (wallJumpedRight)
-                {
-                    wallJumpedRight = false;
-
-                }
-            }
-
-            // Left Right Movement 
-
-            if (Input.GetKey(KeyCode.A))
-            {
-                if (!wallJumpedLeft)
-                {
-                    transform.Translate(Vector2.left * moveSpeed * Time.deltaTime);
-                }
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                if (!wallJumpedRight)
-                {
-                    transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                    if (!wallJumpedRight)
+                    {
+                        transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
+                    }
                 }
             }
 
@@ -127,6 +134,19 @@ public class PlayerScript : MonoBehaviour
             {
                 Destroy(gameObject);
                 SceneManager.LoadScene(4);
+            }
+            if (snared)
+            {
+                if (!gotSnareTime)
+                {
+                    snareTime = Time.time;
+                    gotSnareTime = true;
+                }
+                if (snareTime + snareDuration < Time.time)
+                {
+                    snared = false;
+                    gotSnareTime = false;
+                }
             }
         }
         
